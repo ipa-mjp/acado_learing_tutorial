@@ -36,3 +36,8 @@ FIND_LIBRARY(libacado libacado_toolkit_s.so ${ACADO_DIR}/build/lib)
 add_executable(nonlinear_OCP nonlinear_OCP_node.cpp)
 add_dependencies(nonlinear_OCP ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(nonlinear_OCP ${ACADO_LIBRARIES} ${catkin_LIBRARIES} ${orocos_kdl_LIBRARIES} ${libacado})
+
+## add executable
+add_executable(nonlinear_OCP_hardcoded nonlinear_OCP_hardcoded_node.cpp)
+add_dependencies(nonlinear_OCP_hardcoded ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(nonlinear_OCP_hardcoded ${ACADO_LIBRARIES} ${catkin_LIBRARIES} ${orocos_kdl_LIBRARIES} ${libacado})
