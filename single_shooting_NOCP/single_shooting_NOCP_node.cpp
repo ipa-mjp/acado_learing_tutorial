@@ -110,7 +110,7 @@ int main(int argc, char **argv)
 	OptimizationAlgorithm algorithm(ocp);	//construct optimization algorithm,
 
 	//algorithm.set( MAX_NUM_ITERATIONS, 20)					;	//set number of iteration as 20.0
-	//algorithm.set( HESSIAN_APPROXIMATION, EXACT_HESSIAN )	;	//Approximation of hessian is nothing but exact
+	algorithm.set( HESSIAN_APPROXIMATION, EXACT_HESSIAN )	;	//Approximation of hessian is nothing but exact , FULL_BFGS_UPDATE, CONSTANT_HESSIAN
 	//algorithm.set( HESSIAN_PROJECTION_FACTOR, 2.0)			;	//hessian factor 1.0
 
 	//Algorithmic Options and Numerical Accuracy
