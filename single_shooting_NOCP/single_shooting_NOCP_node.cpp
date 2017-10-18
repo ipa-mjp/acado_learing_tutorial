@@ -116,7 +116,7 @@ int main(int argc, char **argv)
 	//Algorithmic Options and Numerical Accuracy
 	algorithm.set( INTEGRATOR_TYPE 		, INT_RK78 )		;	// Range-Kutta 7/8
 	algorithm.set( INTEGRATOR_TOLERANCE , 1e-8 )			;
-	algorithm.set( DISCRETIZATION_TYPE 	, SINGLE_SHOOTING )	;
+	algorithm.set( DISCRETIZATION_TYPE 	, SINGLE_SHOOTING )	;	//default multi shooting
 	algorithm.set( KKT_TOLERANCE 		, 1e-4)				;	//default value 1e-6
 
 	algorithm	<<	window				;	//flush the plot window,
