@@ -109,6 +109,7 @@ int main(int argc, char **argv)
 
 	OptimizationAlgorithm algorithm(ocp);	//construct optimization algorithm,
 
+	//read data from filess
 	algorithm.initializeDifferentialStates( "/home/bfb-ws/mpc_ws/src/acado_learing_tutorial/nonlinear_OCP/x.txt");	//initialize x from text file
 	algorithm.initializeControls( "/home/bfb-ws/mpc_ws/src/acado_learing_tutorial/nonlinear_OCP/u.txt");	//initialize u from text file
 	algorithm.initializeParameters( "/home/bfb-ws/mpc_ws/src/acado_learing_tutorial/nonlinear_OCP/p.txt");	//initialize p from text file
@@ -119,6 +120,12 @@ int main(int argc, char **argv)
 
 	algorithm	<<	window				;	//flush the plot window,
 	algorithm.solve()					;	//and solve the problem.
+
+	//store output to files
+	algorithm.getDifferentialStates( "/home/bfb-ws/mpc_ws/src/acado_learing_tutorial/nonlinear_OCP/states.txt" )	;
+	algorithm.getParameters( "/home/bfb-ws/mpc_ws/src/acado_learing_tutorial/nonlinear_OCP/parameters.txt" )		;
+	algorithm.getControls( "/home/bfb-ws/mpc_ws/src/acado_learing_tutorial/nonlinear_OCP/controls.txt" )			;
+
 
 return 0;
 }
