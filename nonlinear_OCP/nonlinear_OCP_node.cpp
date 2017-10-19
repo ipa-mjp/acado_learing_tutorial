@@ -121,21 +121,60 @@ int main(int argc, char **argv)
 	algorithm	<<	window				;	//flush the plot window,
 	algorithm.solve()					;	//and solve the problem.
 
+
+//------------------------------------ Store output into files ----------------------------------------------
+
 	//store output to files
 	//algorithm.getDifferentialStates( "/home/bfb-ws/mpc_ws/src/acado_learing_tutorial/nonlinear_OCP/states.txt" )	;
 	//algorithm.getParameters( "/home/bfb-ws/mpc_ws/src/acado_learing_tutorial/nonlinear_OCP/parameters.txt" )		;
 	//algorithm.getControls( "/home/bfb-ws/mpc_ws/src/acado_learing_tutorial/nonlinear_OCP/controls.txt" )			;
 
+	/*
 	//print out-put on terminal
 	VariablesGrid states, paramters, controls	;
 	algorithm.getDifferentialStates( states )	;
 	algorithm.getParameters( paramters )		;
 	algorithm.getControls( controls )			;
 
-	states.print()		;
-	paramters.print()	;
-	controls.print()	;
 
+	states.print()		;	//print states on terminal
+	paramters.print()	;	//print parameters on terminal
+	controls.print()	;	//print controls on terminal
+	 */
+
+//-------------------------------------------- logging functionality ----------------------------------------------------
+/*
+	LogRecord logrecord( LOG_AT_EACH_ITERATION)				;	// in manual gives two arguments, second one file name
+	logrecord << LOG_KKT_TOLERANCE							;
+
+	algorithm	<< logrecord								;
+
+	//solve ocp problem
+	algorithm.solve()										;
+
+	// get the logging object back and print it
+	algorithm.getLogRecord( logrecord )						;
+	logrecord.print();
+*/
+
+//--------------------------------------------- Using Matlab style log variable ---------------------------------------------------
+/*
+	//setup a logging object for all states, controls
+	LogRecord logrecord( LOG_AT_END )						;	// manual gives two arguments, second one file name, this one is Matlab style format
+	logrecord.addItem( LOG_DIFFERENTIAL_STATES, "STATES" )	;
+	logrecord.addItem( LOG_CONTROLS, "CONTROLS" )			;
+	logrecord.addItem( LOG_DISTURBANCES, "DISTURBANCES" )	;
+	logrecord.addItem( LOG_PARAMETERS, "PARAMETERS" )		;
+
+	algorithm << logrecord;
+
+	//solve the optimization problem
+	algorithm.solve()										;
+
+	// get the logging object back and print it
+	algorithm.getLogRecord( logrecord )						;
+	logrecord.print();
+*/
 return 0;
 }
 
