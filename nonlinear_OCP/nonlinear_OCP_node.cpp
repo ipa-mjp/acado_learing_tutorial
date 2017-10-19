@@ -122,10 +122,19 @@ int main(int argc, char **argv)
 	algorithm.solve()					;	//and solve the problem.
 
 	//store output to files
-	algorithm.getDifferentialStates( "/home/bfb-ws/mpc_ws/src/acado_learing_tutorial/nonlinear_OCP/states.txt" )	;
-	algorithm.getParameters( "/home/bfb-ws/mpc_ws/src/acado_learing_tutorial/nonlinear_OCP/parameters.txt" )		;
-	algorithm.getControls( "/home/bfb-ws/mpc_ws/src/acado_learing_tutorial/nonlinear_OCP/controls.txt" )			;
+	//algorithm.getDifferentialStates( "/home/bfb-ws/mpc_ws/src/acado_learing_tutorial/nonlinear_OCP/states.txt" )	;
+	//algorithm.getParameters( "/home/bfb-ws/mpc_ws/src/acado_learing_tutorial/nonlinear_OCP/parameters.txt" )		;
+	//algorithm.getControls( "/home/bfb-ws/mpc_ws/src/acado_learing_tutorial/nonlinear_OCP/controls.txt" )			;
 
+	//print out-put on terminal
+	VariablesGrid states, paramters, controls	;
+	algorithm.getDifferentialStates( states )	;
+	algorithm.getParameters( paramters )		;
+	algorithm.getControls( controls )			;
+
+	states.print()		;
+	paramters.print()	;
+	controls.print()	;
 
 return 0;
 }
