@@ -79,7 +79,7 @@
 
 int main(int argc, char **argv)
 {
-	ros::init(argc, argv,"acado_tut_semi_implicit_dae");
+	ros::init(argc, argv,"acado_tut_close_loop_mpc");
 	ros::NodeHandle nh;
 
 	using namespace ACADO;
@@ -180,6 +180,8 @@ int main(int argc, char **argv)
     DVector u;
     controller.getU(u);
     u.print( "Feedback control" );
+
+    std::cout<<"\033[36;1m"<<"Hello"<<"\033[36;0m"<<std::endl;
 
     return 0;
 }
